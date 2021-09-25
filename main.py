@@ -53,7 +53,7 @@ def main():
         out = (x+1) / 2
         return out.clamp(0,1)
     
-    def reset_grad(x):
+    def reset_grad():
         d_optimizer.zero_grad()
         g_optimizer.zero_grad()
     
@@ -100,7 +100,7 @@ def main():
                           real_score.mean().item(), fake_score.mean().item()))
 
         if (epoch) == 0:
-            iamges = images.reshape(images.size(0), 1, 28, 28)
+            images = images.reshape(images.size(0), 1, 28, 28)
             save_image(denorm(images), os.path.join(sample_dir,'real_images.png'))
     
         fake_images = fake_images.reshape(fake_images.size(0),1,28,28)
